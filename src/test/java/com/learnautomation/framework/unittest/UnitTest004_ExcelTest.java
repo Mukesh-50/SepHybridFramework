@@ -9,7 +9,9 @@ public class UnitTest004_ExcelTest {
 
 	@Test
 	public void checkConfig() {
+		
 		Assert.assertTrue(new ExcelReader().getCellData("Data1", 0, 0) != null);
+	
 	}
 
 }
