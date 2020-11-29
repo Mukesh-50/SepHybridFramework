@@ -2,7 +2,6 @@
 
 Please clone this repo then execute
 
-mvn clean
-mvn test
+mvn clean install
 
 please let me know if you found any issue.
