@@ -21,7 +21,7 @@ public class LoginTest extends BaseClass{
 	}
 	
 	
-	@Test(dataProvider="LoginData",dataProviderClass=DataGenerator.class)
+	@Test(dataProvider="SingleLogin",dataProviderClass=DataGenerator.class)
 	public void loginWithAdmin(String uname,String pass)
 	{
 		login.loginToApplication(uname,pass);	
