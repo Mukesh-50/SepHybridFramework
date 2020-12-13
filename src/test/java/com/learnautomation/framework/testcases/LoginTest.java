@@ -20,7 +20,6 @@ public class LoginTest extends BaseClass{
 		signout=new Signout(driver);
 	}
 	
-	
 	@Test(dataProvider="SingleLogin",dataProviderClass=DataGenerator.class)
 	public void loginWithAdmin(String uname,String pass)
 	{
