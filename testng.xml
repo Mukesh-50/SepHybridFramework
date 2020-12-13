@@ -6,7 +6,7 @@
 			<listener class-name="com.learnautomation.framework.listeners.ExtentTestNGITestListener"></listener>
 	</listeners>
 
-  <test thread-count="5" name="Test">
+  <test  name="Test">
     <classes>
       <class name="com.learnautomation.framework.testcases.LoginTest"/>
     </classes>

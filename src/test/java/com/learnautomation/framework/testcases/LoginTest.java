@@ -27,13 +27,5 @@ public class LoginTest extends BaseClass{
 		login.loginToApplication(uname,pass);	
 		signout.logOut();
 	}
-	
-	/*@Test(dataProvider="SingleLogin",dataProviderClass=DataGenerator.class)
-	public void loginWithAdmin(String uname,String pass,String prod,String quan,String description)
-	{
-		login.loginToApplication(uname,pass);	
-		shop.addProduct(prod, quan, description);
-		signout.logOut();
-	}*/
-	
+
 }
