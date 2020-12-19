@@ -13,14 +13,17 @@ public class Utility
 	
 	public static String captureScreenshot(WebDriver driver)
 	{
-		String path=System.getProperty("user.dir")+"\\Screenshots\\"+System.currentTimeMillis()+".png";
+		String path=System.getProperty("user.dir")+"/Screenshots/"+System.currentTimeMillis()+".png";
 		
 		TakesScreenshot ts=(TakesScreenshot)driver;
+		
 		File src=ts.getScreenshotAs(OutputType.FILE);
 		try 
 		{
 			FileHandler.copy(src, new File(path));
-		} catch (IOException e) 
+			
+		} 
+		catch (IOException e) 
 		{
 			System.out.println("Failed to capture screenshot "+e.getMessage());
 		}
