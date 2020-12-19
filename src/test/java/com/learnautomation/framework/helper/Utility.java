@@ -38,7 +38,7 @@ public class Utility
 		
 		String src=ts.getScreenshotAs(OutputType.BASE64);
 		
-		return "data:image/png;base64"+src;
+		return "data:image/png;base64,"+src;
 	}
 	
 }
