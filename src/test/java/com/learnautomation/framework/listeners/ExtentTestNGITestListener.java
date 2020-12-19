@@ -1,11 +1,16 @@
 package com.learnautomation.framework.listeners;
 
+import java.lang.reflect.Field;
+
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.learnautomation.framework.helper.Utility;
 
 public class ExtentTestNGITestListener implements ITestListener{
 
@@ -32,9 +37,25 @@ public class ExtentTestNGITestListener implements ITestListener{
 
 	public void onTestFailure(ITestResult result) 
 	{
+		
+		try {
 		System.out.println("********** Test Failed*********"+result.getThrowable().getMessage());
+		
+			WebDriver driver=null;
+		
+			Field myField=result.getTestClass().getRealClass().getDeclaredField("driver");
+		
+			driver=(WebDriver)myField.get(result.getInstance());
+			
+			System.out.println("Driver value is "+driver);
 
-		parentTest.get().fail("Test Failed "+result.getThrowable().getMessage());
+			parentTest.get().fail("Test Failed "+result.getThrowable().getMessage(),
+					
+			MediaEntityBuilder.createScreenCaptureFromPath(Utility.captureScreenshot(driver)).build());
+		} catch (Exception e) {
+			
+			System.out.println("Failed to attach screenshot in extent report");
+		}
 		
 	}
 

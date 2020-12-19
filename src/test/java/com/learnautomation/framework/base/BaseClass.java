@@ -16,6 +16,12 @@ public class BaseClass {
 
 	public WebDriver driver;
 	
+	public WebDriver getDriver()
+	{
+		return driver;
+	}
+	
+	
 	@Parameters({"Browser","stagingURL"})
 	@BeforeClass
 	public WebDriver startBrowser(String browser,String appURL)
