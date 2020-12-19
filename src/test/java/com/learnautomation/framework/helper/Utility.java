@@ -13,7 +13,7 @@ public class Utility
 	
 	public static String captureScreenshot(WebDriver driver)
 	{
-		String path=System.getProperty("user.dir")+"/Screenshots/"+System.currentTimeMillis()+".png";
+		String path=System.getProperty("user.dir")+"\\Screenshots\\"+System.currentTimeMillis()+".png";
 		
 		TakesScreenshot ts=(TakesScreenshot)driver;
 		File src=ts.getScreenshotAs(OutputType.FILE);
