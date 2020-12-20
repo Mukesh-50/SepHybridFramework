@@ -67,6 +67,11 @@ public class BaseClass {
 			 caps.setCapability("os_version", "Big Sur");
 			 caps.setCapability("browser", "Chrome");
 			 caps.setCapability("browser_version", "latest");
+			 try {
+					driver=new RemoteWebDriver(new URL(huburl), caps);
+				} catch (MalformedURLException e) {
+					System.out.println("HUB URL is invalid "+e.getMessage());
+				}
 		}
 		else if(browser.equalsIgnoreCase("RemoteChromeWin"))
 		{
