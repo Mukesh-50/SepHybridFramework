@@ -28,6 +28,8 @@ public class GridDemo  {
 		   caps.setCapability("name", "Test on IPhone 12 New");
 		   caps.setCapability("browserstack.console", "errors");
 		   caps.setCapability("browserstack.networkLogs", true);
+		   
+		   
 		   WebDriver driver = null;
 		   try 
 		   {
