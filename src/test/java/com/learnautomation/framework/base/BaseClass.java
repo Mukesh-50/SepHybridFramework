@@ -1,5 +1,7 @@
 package com.learnautomation.framework.base;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -7,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -73,7 +76,11 @@ public class BaseClass {
 			 caps.setCapability("os_version", "10");
 			 caps.setCapability("browser", "Chrome");
 			 caps.setCapability("browser_version", "latest");
-			
+			 try {
+				driver=new RemoteWebDriver(new URL(huburl), caps);
+			} catch (MalformedURLException e) {
+				System.out.println("HUB URL is invalid "+e.getMessage());
+			}
 		}
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
