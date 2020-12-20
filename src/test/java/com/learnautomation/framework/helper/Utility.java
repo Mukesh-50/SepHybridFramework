@@ -32,5 +32,15 @@ public class Utility
 	}
 	
 	
+	public static String captureScreenshot64(WebDriver driver) {
+		
+		TakesScreenshot ts=(TakesScreenshot)driver;
+		
+		String src=ts.getScreenshotAs(OutputType.BASE64);
+		
+		return "data:image/png;base64,"+src;
+	}
+	
+	
 	
 }

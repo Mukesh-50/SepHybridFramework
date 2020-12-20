@@ -51,7 +51,8 @@ public class ExtentTestNGITestListener implements ITestListener{
 
 			parentTest.get().fail("Test Failed "+result.getThrowable().getMessage(),
 					
-			MediaEntityBuilder.createScreenCaptureFromPath(Utility.captureScreenshot(driver)).build());
+			MediaEntityBuilder.createScreenCaptureFromBase64String(Utility.captureScreenshot64(driver)).build());
+			
 		} catch (Exception e) {
 			
 			System.out.println("Failed to attach screenshot in extent report");
