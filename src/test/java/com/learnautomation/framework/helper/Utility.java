@@ -2,14 +2,43 @@ package com.learnautomation.framework.helper;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Utility 
 {
+	
+	public static void waitAndType(WebDriver driver,By locator,String text,String logInfo)
+	{
+		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(locator)).sendKeys(text);
+		System.out.println("LOG:INFO- "+logInfo);
+	}
+	
+	public static void waitAndClick(WebDriver driver,By locator,String logInfo)
+	{
+		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(locator)).click();
+		System.out.println("LOG:INFO- "+logInfo);
+	}
+	
+	
+	public static void wait(int seconds)
+	{
+		System.out.println("LOG:INFO- Waiting for "+seconds + " seconds");
+		try 
+		{
+			Thread.sleep(seconds*1000);
+		} catch (InterruptedException e) {
+			
+		}
+	}
+	
 	
 	public static String captureScreenshot(WebDriver driver)
 	{

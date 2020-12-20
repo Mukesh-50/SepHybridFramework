@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import com.learnautomation.framework.helper.Utility;
+
 public class LoginPage {
 
 	WebDriver driver;
@@ -40,9 +42,12 @@ public class LoginPage {
 	
 	public void loginToApplication(String user,String pass)
 	{
-		driver.findElement(username).sendKeys(user);
+		Utility.waitAndType(driver, username, user, "Enter username");
+		Utility.waitAndType(driver, password, pass, "Enter password");
+		Utility.waitAndClick(driver, loginButton, "press login button");
+		/*driver.findElement(username).sendKeys(user);
 		driver.findElement(password).sendKeys(pass);
-		driver.findElement(loginButton).click();
+		driver.findElement(loginButton).click();*/
 		Assert.assertTrue(driver.getCurrentUrl().contains("dashboard"));
 	}
 	

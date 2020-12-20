@@ -21,7 +21,7 @@ public class ExtentTestNGITestListener implements ITestListener{
 	ThreadLocal<ExtentTest> parentTest=new ThreadLocal<ExtentTest>();
 	
 	
-	public void onTestStart(ITestResult result) {
+	public synchronized void onTestStart(ITestResult result) {
 		System.out.println("********** Starting Test*********");
 		ExtentTest parent=extent.createTest(result.getMethod().getMethodName());
 		parentTest.set(parent);
@@ -29,7 +29,7 @@ public class ExtentTestNGITestListener implements ITestListener{
 		
 	}
 
-	public void onTestSuccess(ITestResult result) {
+	public synchronized void onTestSuccess(ITestResult result) {
 		System.out.println("********** Test Successful*********");
 		parentTest.get().pass("Test Completed Successfully");
 		
@@ -60,7 +60,7 @@ public class ExtentTestNGITestListener implements ITestListener{
 		
 	}
 
-	public void onTestSkipped(ITestResult result) {
+	public synchronized void onTestSkipped(ITestResult result) {
 		System.out.println("********** Test Skipped*********"+result.getThrowable().getMessage());
 
 		parentTest.get().skip("Test Skipped "+result.getThrowable().getMessage());
@@ -77,7 +77,7 @@ public class ExtentTestNGITestListener implements ITestListener{
 		
 	}
 
-	public void onFinish(ITestContext context) {
+	public synchronized void onFinish(ITestContext context) {
 		extent.flush();
 		System.out.println("********** Writing Result to report*********");
 		
