@@ -53,7 +53,7 @@ public class Utility {
 	}
 
 	public static void wait(int seconds) {
-		System.out.println("LOG:INFO- Waiting for " + seconds + " seconds");
+		//System.out.println("LOG:INFO- Waiting for " + seconds + " seconds");
 		try {
 			Thread.sleep(seconds * 1000);
 		} catch (InterruptedException e) {

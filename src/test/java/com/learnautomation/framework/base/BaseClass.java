@@ -6,9 +6,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
+
+import com.learnautomation.framework.helper.ConfigReader;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -27,6 +30,8 @@ public class BaseClass {
 	public WebDriver startBrowser(String browser,String appURL)
 	{
 		
+		
+		
 		System.out.println("********** Starting Session **********");
 		
 		System.out.println("Test is running on "+browser);
@@ -35,6 +40,8 @@ public class BaseClass {
 		//String browser=ConfigReader.getProperty("Browser");
 		//String appURL=ConfigReader.getProperty("stagingURL");
 	
+		String huburl = "https://" + ConfigReader.getProperty("BSUSERNAME") + ":" + ConfigReader.getProperty("BSAUTOMATE_KEY") +"@"+ConfigReader.getProperty("HUBURL");
+		
 		if(browser.equalsIgnoreCase("Chrome"))
 		{
 			WebDriverManager.chromedriver().setup();
@@ -48,6 +55,25 @@ public class BaseClass {
 		else if (browser.equalsIgnoreCase("Edge")) {
 			WebDriverManager.edgedriver().setup();
 			driver=new EdgeDriver();
+		}
+		else if(browser.equalsIgnoreCase("RemoteChromeMAC"))
+		{
+			System.out.println("LOG:INFO- Test Running on Browserstack-MAC");
+			 DesiredCapabilities caps = new DesiredCapabilities();
+			 caps.setCapability("os", "OS X");
+			 caps.setCapability("os_version", "Big Sur");
+			 caps.setCapability("browser", "Chrome");
+			 caps.setCapability("browser_version", "latest");
+		}
+		else if(browser.equalsIgnoreCase("RemoteChromeWin"))
+		{
+			System.out.println("LOG:INFO- Test Running on Browserstack-Windows");
+			 DesiredCapabilities caps = new DesiredCapabilities();
+			 caps.setCapability("os", "Windows");
+			 caps.setCapability("os_version", "10");
+			 caps.setCapability("browser", "Chrome");
+			 caps.setCapability("browser_version", "latest");
+			
 		}
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);

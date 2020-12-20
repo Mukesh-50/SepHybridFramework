@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.learnautomation.framework.helper.Utility;
+
 public class Signout {
 
 	WebDriver driver;
@@ -19,8 +21,8 @@ public class Signout {
 	
 	public void logOut()
 	{
-		driver.findElement(welcomeLink).click();
-		driver.findElement(logout).click();
+		Utility.waitAndClick(driver, welcomeLink, "Click on Welcome Link");
+		Utility.waitAndClick(driver, logout, "Click on logout");
 	}
 	
 }

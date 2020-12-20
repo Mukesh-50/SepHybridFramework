@@ -1,2 +1,5 @@
 Browser=Chrome
 stagingURL=https://opensource-demo.orangehrmlive.com/
+BSUSERNAME = "mukeshotwani3";
+BSAUTOMATE_KEY = "s4GTbs4fFzQxJxzpzp2f";
+HUBURL=hub-cloud.browserstack.com/wd/hub
